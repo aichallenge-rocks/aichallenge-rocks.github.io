@@ -1,2 +1,2 @@
 # aichallenge-rocks.github.io
-Static site
+Static site for aichallenge
