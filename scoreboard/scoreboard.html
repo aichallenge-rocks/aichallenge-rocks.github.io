@@ -1,0 +1,71 @@
+<div class="container" id="scoreboard">
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Latest discussions:</strong>
+            <div ng-repeat="topic in latestTopics | orderBy:'-bumped_at' | limitTo:3 ">
+                <a href="http://discuss.aichallenge.rocks/t/{{topic.id}}">{{topic.title}}</a> {{topic.bumped_at | date:'HH:mm MM/dd/yyyy' | timeago}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br/>
+            <div ng-repeat="topic in latestTopics | orderBy:'-bumped_at' | slice:3:6 ">
+                <a href="http://discuss.aichallenge.rocks/t/{{topic.id}}">{{topic.title}}</a> {{topic.bumped_at | date:'HH:mm MM/dd/yyyy' | timeago}}
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="pull-left">Round started at {{round.startTime | date: 'HH:mm:ss'}}</div>
+        <div class="pull-right">{{round.progress.completed}}/{{round.progress.all}} games played</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-hover">
+                <caption>Participants</caption>
+                <tr>
+                    <th class="number">#</th>
+                    <th class="trophy"></th>
+                    <th class="name">Username</th>
+                    <th class="language">lang</th>
+                    <th class="score">Score</th>
+                </tr>
+                <tr ng-repeat="user in users | epamer:false | orderBy:'-score' ">
+                    <td>{{$index + 1}}</td>
+                    <td ng-class="$index < 3 ? 'trophy' + $index : ''">
+                    </td>
+                    <td class="player-name">
+                        <p><a href="#/profile/{{user.id}}">{{user.nickname}}</a></p>
+                    </td>
+                    <td class="language"><span
+                            class="label label-info">{{user.language==='cs'?'c#':user.language}}</span></td>
+                    <td class="score-points">{{user.score}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-hover">
+                <caption><img height="20" src="scoreboard/image/epam.png" alt=""/></caption>
+                <tr>
+                    <th class="number">#</th>
+                    <th class="trophy"></th>
+                    <th class="name">Username</th>
+                    <th class="language">lang</th>
+                    <th class="score">Score</th>
+                </tr>
+                <tr ng-repeat="user in users | epamer:true | orderBy:'-score'">
+                    <td>{{$index + 1}}</td>
+                    <td ng-class="$index < 3 ? 'trophy' + $index : ''">
+                    </td>
+                    <td class="player-name">
+                        <p><a href="#/profile/{{user.id}}">{{user.nickname}}</a></p>
+                    </td>
+                    <td class="language"><span
+                            class="label label-info">{{user.language==='cs'?'c#':user.language}}</span></td>
+                    <td class="score-points">{{user.score}}</td>
+                </tr>
+            </table>
+        </div>
+        <div id="loader" ng-hide="isLoaded"></div>
+    </div>
+</div>

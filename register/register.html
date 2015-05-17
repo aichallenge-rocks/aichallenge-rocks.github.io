@@ -1,0 +1,79 @@
+<div class="container" id="register">
+  <div class="center-col">
+    <h2>Register</h2>
+
+    <div class="alert alert-success" ng-show="successRegistration">
+      You have been successfully registered!
+      <br>
+      Now go to <a href="#/login">login</a> page
+    </div>
+
+    <div class="form-group">
+      <form name="form" ng-submit="form.$valid && submit()" novalidate>
+
+        <div class="form-group">
+          <div ng-class="{'has-error': form.nickname.$invalid && form.nickname.edited}">
+            <input type="text" class="form-control input-lg" placeholder="Nickname" name="nickname" ng-model="user.nickname" ng-maxlength="100" server-error edited required>
+            <div ng-show="form.nickname.edited">
+              <span class="help-block" ng-show="form.nickname.$error.server">{{errors.nickname}}</span>
+              <span class="help-block" ng-show="form.nickname.$error.required">Nickname can't be blank</span>
+              <span class="help-block" ng-show="form.nickname.$error.maxlength">Nickname length can't be more than 100 characters</span>
+            </div>
+          </div>
+          <input type="text" class="form-control input-lg" placeholder="Name" ng-model="user.name">
+        </div>
+
+        <div class="form-group" ng-class="form.email.$invalid && form.email.edited ? 'has-error' : 'has-warning has-feedback'">
+            <input type="email" class="form-control input-lg" placeholder="Email address" name="email" ng-model="user.email" ng-pattern="EMAIL_REGEXP" ng-maxlength="100" server-error edited required>
+            <span ng-hide="form.email.$invalid && form.email.edited" class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+            <div ng-hide="form.email.$invalid && form.email.edited">
+              <span class="help-text text-warning">To register as an internal employee use your <strong>@epam.com</strong> email</span>
+            </div>
+            <div ng-show="form.email.$invalid && form.email.edited">
+              <span class="help-block" ng-show="form.email.$error.server">{{errors.email}}</span>
+              <span class="help-block" ng-show="form.email.$error.required">Email can't be blank</span>
+              <span class="help-block" ng-show="form.email.$error.pattern">Email is invalid</span>
+              <span class="help-block" ng-show="form.email.$error.maxlength">Email length can't be more than 100 characters</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div ng-class="{'has-error': form.password.$invalid && form.password.edited}">
+            <div ng-show="form.password.edited">
+              <span class="help-block" ng-show="form.password.$error.required">Password can't be blank</span>
+              <span class="help-block" ng-show="form.password.$error.maxlength">Password length can't be more than 100 characters</span>
+            </div>
+            <input type="password" class="form-control input-lg" placeholder="Password" ng-model="user.password" name="password" ng-maxlength="100" edited required>
+          </div>
+          <div ng-class="{'has-error': form.password.$valid && form.passwordConfirm.$invalid && form.passwordConfirm.edited}">
+            <input type="password" class="form-control input-lg" placeholder="Repeat password" ng-model="user.password_confirm" name="passwordConfirm" match="user.password" edited>
+            <div ng-show="form.passwordConfirm.edited">
+              <span class="help-block" ng-show="form.password.$valid && form.passwordConfirm.$error.mismatch">Check passwords for equality</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group input-group-lg">
+            <div ng-class="{'has-error': form.phone.$invalid && form.phone.edited}">
+              <input type="text" class="form-control input-lg" placeholder="Phone or Skype" name="phone" data-ng-model="user.phone" ng-maxlength="100" server-error edited required>
+            </div>
+            <span class="input-group-addon" data-toggle="tooltip" data-placement="top" title="We need this information to be able to contact you in case you win." tooltip>
+              <span class="glyphicon glyphicon-question-sign"></span>
+            </span>
+          </div>
+          <div ng-show="form.phone.edited" ng-class="{'has-error': form.phone.$invalid && form.phone.edited}">
+            <span class="help-block" ng-show="form.phone.$error.server">{{errors.phone}}</span>
+            <span class="help-block" ng-show="form.phone.$error.required">Phone can't be blank</span>
+            <span class="help-block" ng-show="form.phone.$error.maxlength">Phone length can't be more than 100 characters</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-lg btn-block" ladda="isLoading" data-style="expand-right">Register</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

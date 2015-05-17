@@ -1,0 +1,41 @@
+<div id="legend" ng-show="gameOver.moves.length">
+    <a ng-href="#/profile/{{white.id}}">{{white.nickname}}</a>
+    <img src="game/pieces/PHARAOH_SILVER_FRONT.png" alt="{{white.nickname}}"/>
+    <h2 style="display: inline-block;">VS.</h2>
+    <img src="game/pieces/PHARAOH_RED_FRONT.png" alt="{{red.nickname}}"/>
+    <a ng-href="#/profile/{{red.id}}">{{red.nickname}}</a>
+</div>
+<div id="gameWrapper" style="position: relative">
+    <div ng-show="gameOver.moves.length">
+        <div class="boardWrapper">
+            <table id="board" class="board">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <svg class="visualizer">
+            <path id="laser" fill="transparent" stroke="red" stroke-width="3" d="M 0 0"/>
+            <text id="msg" x="50%" y="45%" fill="white" stroke="black" font-weight="bold" font-size="50"
+                  text-anchor="middle"></text>
+        </svg>
+        <div class="progressBox">
+            <span id="start">Start</span><span id="end" style="float: right"></span>
+            <input id="progress" type="range" min="0" value="0" step="1" disabled>
+            <hr/>
+            <button id="resume" style="float: right" disabled>resume</button>
+            <button id="pause" style="float: right" disabled>pause</button>
+            <label for="x1">
+                <input id="x1" type="radio" name="speed" checked value="3000"/>x1
+            </label>
+            <label for="x2">
+                <input id="x2" type="radio" name="speed" value="1500"/>x2
+            </label>
+            <label for="x10">
+                <input id="x10" type="radio" name="speed" value="100"/>x10
+            </label>
+            <hr/>
+        </div>
+        <ol id="logs" style="overflow-y: scroll">GAME LOG:</ol>
+    </div>
+    <ul id="system">SYSTEM LOG:</ul>
+</div>

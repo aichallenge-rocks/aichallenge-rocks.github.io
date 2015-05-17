@@ -1,0 +1,41 @@
+<div class="container" id="profile">
+
+    <div user-info="user"></div>
+
+    <div class="col-md-9 col-lg-9">
+        <div id="games">
+            <table class="table table-hover">
+                <caption><h3>Last games</h3></caption>
+                <tr>
+                    <th class="number">#</th>
+                    <th class="vs" colspan="3"></th>
+                    <th class="moves">Moves</th>
+                    <th class="winner">Winner</th>
+                    <th class="watch"></th>
+                </tr>
+                <tr ng-repeat="game in games | orderBy:order">
+                    <td>{{$index + 1}}</td>
+                    <td style="text-align: right">
+                        <span><a ng-href="#/profile/{{game.player1.id}}">{{game.player1.nickname}}</a></span>
+                        <span class="badge {{game.player1.color===1?'gray':'red'}}">{{game.status === 'Completed' ? game.player1.score : '-'}}</span>
+                    </td>
+                    <td style="width: 30px"><span>VS.</span></td>
+                    <td style="text-align: left">
+                        <span class="badge {{game.player2.color===1?'gray':'red'}}">{{game.status === 'Completed' ? game.player2.score : '-'}}</span>
+                        <span><a ng-href="#/profile/{{game.player2.id}}">{{game.player2.nickname}}</a></span>
+                    </td>
+                    <td>
+                        {{game.moves === 0 || game.moves ? game.moves : '-'}}
+                    </td>
+                    <td><winner game="game"></winner></td>
+                    <td>
+                        <a ng-show="game.status === 'Completed'" ng-href="#/game/{{game.id}}" class="btn btn-default btn-sm">Watch game</a>
+                        <small ng-show="game.status === 'InProgress'">In progress</small>
+                        <small ng-show="game.status === 'Pending'">Pending</small>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div id="home">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>EPAM Brest AI Challenge</h1>
+            <h3>The only way to improve</h3>
+            <div class="pull-left">
+                <h2>Your intelligence</h2>
+                <div class="text-center">
+                    <a ng-href="{{joinUsHref}}" class="join-us-button">
+                        <h3>Join us</h3>
+                    </a>
+                    <h4>And win the prizes in the epic battle</h4>
+                </div>
+            </div>
+            <div>
+                <img src="home/img/jumbotron.jpg"/>
+            </div>
+        </div>
+    </div>
+    <div class="steps-line">
+        <div class="container">
+            <div class="numerate">
+                <div class="col-sm-4">
+                    <h3>Create your bot</h3>
+                    Use one of our prepared SDKs for your favorite language to create the most intelligent bot
+                </div>
+                <div class="col-sm-4">
+                    <h3>Win your opponents</h3>
+                    Submit your bot to our automated game system, win games and get to the top of scoreboard
+                </div>
+                <div class="col-sm-4">
+                    <h3>Become a hero</h3>
+                    Stay in the top till the end of the season and win one of our prizes. No cheats, just intelligence
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="feature">
+            <div class="col-sm-4 col-sm-push-8">
+                <img src="/home/img/languages.png" class="img-responsive"/>
+            </div>
+            <div class="col-sm-8 col-sm-pull-4">
+                <h2 class="primary-color">Your favorite programming language</h2>
+                <p>Download our SDK for your favorite programming language and create amazing bot. SDK contains bot template, local server to run the game, visualizer and simple opponent, which allow you to try your skills in real battle.</p>
+                <div class="col-xs-6" style="padding-left: 0">
+                    <select ng-model="gbdk" ng-options="gbdk.name for gbdk in gbdks" class="form-control"></select>
+                </div>
+                <a ng-href="{{gbdk.link}}" class="text-underline">Download</a>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="col-sm-4">
+                <a href="http://www.crucial.com/usa/en/storage-ssd-m550"><img src="/home/img/crucial-m550.jpg" class="img-responsive" /></a>
+            </div>
+            <div class="col-sm-8 text-right">
+                <h2 class="primary-color">Blazing fast solid state drives</h2>
+                <p>
+                    Use all your skills to create the most intelligent game bot, defeat your enemies and become a winner.
+                    <br>
+                    Authors of the best bots will get ultra fast <a href="http://www.crucial.com/usa/en/storage-ssd-m550">Crucial M550 solid state drive</a>, which bring your PC's performance to unbelievable heights. Remember! Better results - better drive!
+                </p>
+                <ul class="list-unstyled">
+                    <li><strong>1st</strong> Prize: Crucial M550 <strong>512</strong>Gb</li>
+                    <li><strong>2nd</strong> Prize: Crucial M550 <strong>256</strong>Gb</li>
+                    <li><strong>3rd</strong> Prize: Crucial M550 <strong>128</strong>Gb</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

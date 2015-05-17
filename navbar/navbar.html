@@ -1,0 +1,51 @@
+<nav class="navbar navbar-default" id="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#/home" class="navbar-brand"><h2>AI CHALLENGE</h2></a>
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li ng-class="{'active': isRouteActive('/rules')}">
+                    <a href="#/rules"><h4>RULES</h4></a>
+                </li>
+                <li>
+                    <a href="http://discuss.aichallenge.rocks/"><h4>DISCUSS</h4></a>
+                </li>				
+                <li ng-class="{'active': isRouteActive('/scoreboard')}">
+                    <a href="#/scoreboard"><h4>SCOREBOARD</h4></a>
+                </li>
+                <li ng-class="{'active': isRouteActive('/prizes')}">
+                    <a href="#/prizes"><h4>PRIZES</h4></a>
+                </li>
+                <li ng-class="{'active': isRouteActive('/about')}">
+                    <a href="#/about"><h4>ABOUT</h4></a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-show="auth.isAuthenticated" ng-class="{'active': isRouteActive('/edit')}">
+                    <a href="#/editor"><h4>My bot</h4></a>
+                </li>
+                <li ng-show="auth.isAuthenticated" ng-class="{'active': isRouteActive('/profile')}">
+                    <a href="#/profile/{{auth.user.id}}"><h4>PROFILE</h4></a>
+                </li>
+                <li ng-show="auth.isAuthenticated">
+                    <a href="" ng-click="logout()"><h4>LOG OUT</h4></a>
+                </li>
+                <li ng-hide="auth.isAuthenticated" ng-class="{'active': isRouteActive('/login')}">
+                    <a href="#/login"><h4>SIGN IN</h4></a>
+                </li>
+                <li ng-hide="auth.isAuthenticated" ng-class="{'active': isRouteActive('/register')}">
+                    <a href="#/register"><h4>REGISTER</h4></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<error-message></error-message>

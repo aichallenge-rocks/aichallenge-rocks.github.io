@@ -1,0 +1,31 @@
+<div class="container" id="code-editor">
+    <div class="row" ng-hide="finished">
+        <div class="col-md-2" code-upload>
+            <button class="btn btn-default btn-block">Upload file</button>
+            <input type="file" style="display: none"/>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <select class="form-control" ng-model="mode" ng-options="value as key for (key , value) in modes" ng-change="changeEditorMode()"></select>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="finished">
+        <div class="col-md-12">
+            <h2 class="text-center">Competition is finished</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="code"></ui-codemirror>
+        </div>
+    </div>
+    <div class="row" ng-hide="finished">
+        <div class="col-md-10">
+            {{lastModified ? "Last submitted at:" + (lastModified | date: 'MMMM d, y HH:mm:ss') : "You have never submitted your bot"}}
+        </div>
+        <div class="col-md-2">
+            <button ng-click="save()" ladda="isSaved" data-style="expand-right" class="btn btn-success btn-block">Save</button>
+        </div>
+    </div>
+</div>
